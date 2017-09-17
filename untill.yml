@@ -1,0 +1,16 @@
+--- # UNTILL PLAYOOK EXAMPLE
+- hosts: apacheweb
+  sudo: yes
+  connection: ssh
+  user: ansible
+  gather_facts: no 
+  tasks: 
+    - name: Installing apacheweb server
+      yum: pkg=httpd state=latest
+    - name: Verify Service Status
+      shell: service httpd status
+      register: result
+      until: result.stdout.find("httpd (running)") != -1
+      retries: 5
+      delay: 5
+    - debug: var=result

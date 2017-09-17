@@ -1,0 +1,10 @@
+---
+- hosts: webserver
+  tasks: 
+  - name: upload a file to the target if it doesn't exists. 
+     copy:
+      src: /opt/program1.sh
+      dest: /home/ansible/program1.sh
+      mode: 0755
+  - name: if line not there, then add it
+    

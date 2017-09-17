@@ -1,0 +1,7 @@
+- name: Install the Apache Web Server
+  yum: pkg=httpd state=latest
+  notify: Restart HTTPD
+- name: Install the lynx package
+  yum: pkg=lynx state=latest
+- name: Install the telnet package
+  yum: pkg=telnet state=latest
